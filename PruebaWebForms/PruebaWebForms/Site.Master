@@ -7,6 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - My ASP.NET Application</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato%7CRaleway%7CPoiret+One" rel="stylesheet">
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -37,34 +38,31 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
+        
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
+        <img runat="server" id ="imgHeader" src="http://www.vendee-tourisme.com/media/tourismethandicapheader__098842900_1450_16092016.jpg" />
+       
+        <div  runat="server" id="aNav" class="navbar navbar-inverse navbar-fixed-top myNav ">
+            <!-- navbar-fixed-top-->          
+
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">SIEI</a>
+                    <a class="navbar-brand logo" runat="server" href="~/">SIEI</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                     
-                        <ul class="nav navbar-nav">
-                            <asp:LoginView runat="server" ViewStateMode="Disabled">
-                                <LoggedInTemplate>
-                            <li><a runat="server" href="~/">Home</a></li>
-                            <li><a runat="server" href="~/About">About</a></li>
-                            <li><a runat="server" href="~/Contact">Contact</a></li>
-                                </LoggedInTemplate>
-                            </asp:LoginView>
-                        </ul>
-                    
+                    <ul id="opcNav" class="nav navbar-nav nvb">
+                        <li><a  id="regPers" runat="server" href="~/">Registrar persona</a></li>
+                        <li><a  id="regEmp" runat="server" href="~/About">Registrar empresa</a></li>                 
+                    </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Register">Registrarse</a></li>
-                                <li><a runat="server" href="~/Account/Login">Iniciar sesión</a></li>
+                                <li><a runat="server" href="~/Account/Register">Register</a></li>
+                                <li><a runat="server" href="~/Account/Login">Log in</a></li>
                             </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
@@ -78,7 +76,8 @@
                     </asp:LoginView>
                 </div>
             </div>
-        </div>
+        
+
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
