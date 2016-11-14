@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ceabadModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="cedula" />
+          </Key>
+          <Property Name="cedula" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="30" />
+          <Property Name="apellido1" Type="varchar" MaxLength="30" />
+          <Property Name="apellido2" Type="varchar" MaxLength="30" />
+          <Property Name="tipoPersona" Type="int" />
+        </EntityType>
+        <EntityType Name="tipo_persona">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Persona__tipo_pe__15502E78">
+          <End Role="tipo_persona" Type="Self.tipo_persona" Multiplicity="0..1" />
+          <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Persona">
+              <PropertyRef Name="tipoPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ceabadModelStoreContainer">
+          <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipo_persona" EntityType="Self.tipo_persona" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Persona__tipo_pe__15502E78" Association="Self.FK__Persona__tipo_pe__15502E78">
+            <End Role="tipo_persona" EntitySet="tipo_persona" />
+            <End Role="Persona" EntitySet="Persona" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ceabadModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Persona" EntityType="ceabadModel.Persona" />
+          <EntitySet Name="tipo_persona" EntityType="ceabadModel.tipo_persona" />
+          <AssociationSet Name="FK__Persona__tipo_pe__15502E78" Association="ceabadModel.FK__Persona__tipo_pe__15502E78">
+            <End Role="tipo_persona" EntitySet="tipo_persona" />
+            <End Role="Persona" EntitySet="Persona" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="cedula" />
+          </Key>
+          <Property Name="cedula" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="apellido1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="apellido2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="tipoPersona" Type="Int32" />
+          <NavigationProperty Name="tipo_persona" Relationship="ceabadModel.FK__Persona__tipo_pe__15502E78" FromRole="Persona" ToRole="tipo_persona" />
+        </EntityType>
+        <EntityType Name="tipo_persona">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Persona" Relationship="ceabadModel.FK__Persona__tipo_pe__15502E78" FromRole="tipo_persona" ToRole="Persona" />
+        </EntityType>
+        <Association Name="FK__Persona__tipo_pe__15502E78">
+          <End Type="ceabadModel.tipo_persona" Role="tipo_persona" Multiplicity="0..1" />
+          <End Type="ceabadModel.Persona" Role="Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Persona">
+              <PropertyRef Name="tipoPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ceabadModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Persona">
+            <EntityTypeMapping TypeName="ceabadModel.Persona">
+              <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="tipoPersona" ColumnName="tipoPersona" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_persona">
+            <EntityTypeMapping TypeName="ceabadModel.tipo_persona">
+              <MappingFragment StoreEntitySet="tipo_persona">
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ceabadModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Persona">
+      <EntityTypeMapping TypeName="ceabadModel.Persona">
+        <MappingFragment StoreEntitySet="Persona">
+          <ScalarProperty Name="tipoPersona" ColumnName="tipoPersona" />
+          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+          <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_persona">
+      <EntityTypeMapping TypeName="ceabadModel.tipo_persona">
+        <MappingFragment StoreEntitySet="tipo_persona">
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

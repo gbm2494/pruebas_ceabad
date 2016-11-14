@@ -56,7 +56,8 @@
                 <div class="navbar-collapse collapse">
                     <ul id="opcNav" class="nav navbar-nav nvb">
                         <li><a  id="regPers" runat="server" href="~/">Registrar persona</a></li>
-                        <li><a  id="regEmp" runat="server" href="~/About">Registrar empresa</a></li>                 
+                        <li><a  id="regEmp" runat="server" href="~/About">Registrar empresa</a></li>
+                        <li><a  id="grid" runat="server" href="~/Grid">Ver grid</a></li>                 
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
